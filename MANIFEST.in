@@ -1,0 +1,4 @@
+include README.rst CHANGES.rst
+
+include test/data/loadit/*.py
+include test/data/yamlfile/*.yaml
