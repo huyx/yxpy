@@ -84,3 +84,38 @@ usage::
     from yxpy import yamlfile
 
     yamlfile.load('main.yaml')
+
+logginghandlers
+===============
+
+- SocketHandler(host, port)
+- DatagramHandler(host, port)
+- RedisListHandler(list_name, list_maxsize=1024, host='localhost', port=6379, password=None)
+- RedisPublishHandler(self, channel, host='localhost', port=6379, password=None)
+
+SocketHandler & DatagramHandler
+-------------------------------
+
+logging package provide many Handlers, include `SocketHandler` and
+`DatagramHandler`, but the data transmit to server is packed as binary, this
+module privide simular handler to transmit plain text to server.
+
+example::
+
+    socket_handler = SocketHandler(host, port)
+    ...
+    datagram_handler = DatagramHandler(host, port)
+    ...
+
+RedisListHandler & RedisPublishHandler 
+--------------------------------------
+
+use Redis as log server, the two handler is just privide a singleway to redis
+server. to keep simple, the handlers does check the response of redis.
+
+example:
+
+    handler = RedisListHandler(list_name='logtest', list_maxsize=100, password='test')
+    ...
+    handler = RedisPublishHandler(channel='logtest', password='test')
+    ...

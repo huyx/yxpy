@@ -6,7 +6,7 @@ Feature:
 - support !include tag to include another YAML file
 """
 from __future__ import print_function
-from yaml.constructor import Constructor
+from yaml.constructor import Constructor, ConstructorError
 import os.path
 import yaml
 
@@ -18,9 +18,25 @@ def load(filename):
     dirname = os.path.dirname(filename)
 
     def include(loader, node):
-        filename = os.path.join(dirname, loader.construct_scalar(node))
-        with open(filename) as f:
-            return yaml.load(f)
+        try:
+            filename = loader.construct_scalar(node)
+        except:
+            try:
+                filename, nodename = loader.construct_sequence(node)
+            except:
+                raise ConstructorError(None, None,
+                    'expected a string or sequence(2 elements), but found %s' % node.id,
+                    node.start_mark)
+        else:
+            nodename = None
+
+        with open(os.path.join(dirname, filename)) as f:
+            document = yaml.load(f)
+
+        if nodename:
+            return document[nodename]
+
+        return document
 
     Constructor.add_constructor(INCLUDE_TAG, include)
 

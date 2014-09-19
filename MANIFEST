@@ -13,4 +13,5 @@ test\data\yamlfile\main.yaml
 yxpy\__init__.py
 yxpy\callit.py
 yxpy\loadit.py
+yxpy\logginghandlers.py
 yxpy\yamlfile.py

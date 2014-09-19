@@ -22,9 +22,9 @@ def read_files(*fnames):
 
 setup(
     name = 'yxpy',
-    version = '0.1.0',
+    version = '0.1.1',
     packages = ['yxpy'],
-    description = 'Python utils)',
+    description = 'Python utils',
     long_description = read_files('README.rst', 'CHANGES.rst'),
     author = 'huyx',
     author_email = 'ycyuxin@gmail.com',
