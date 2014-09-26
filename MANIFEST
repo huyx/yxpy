@@ -3,7 +3,9 @@ CHANGES.rst
 README.rst
 setup.py
 test\test_callit.py
+test\test_dotit.py
 test\test_loadit.py
+test\test_maybestartswith.py
 test\test_yamlfile.py
 test\data\loadit\__init__.py
 test\data\loadit\m.py
@@ -12,6 +14,8 @@ test\data\yamlfile\aa.yaml
 test\data\yamlfile\main.yaml
 yxpy\__init__.py
 yxpy\callit.py
+yxpy\dotit.py
 yxpy\loadit.py
 yxpy\logginghandlers.py
+yxpy\maybestartswith.py
 yxpy\yamlfile.py

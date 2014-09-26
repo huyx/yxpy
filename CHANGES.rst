@@ -1,6 +1,11 @@
 Changes
 =======
 
+0.1.2(2014-09-26)
+-----------------
+
+- add dotit: include DotIt, DotDict, DotOrderedDict
+
 0.1.1(2014-09-19)
 -----------------
 

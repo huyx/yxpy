@@ -1,6 +1,8 @@
 Python utils
 ************
 
+Tested in Python2.7, Python3.4.
+
 callit
 ======
 
@@ -32,6 +34,43 @@ Sometimes, you may use Parameters(similar to CallIt)::
 
     parameters = Parameters('x', 'y', sep=',')
     parameters(format)
+
+dotit
+=====
+
+Usually, dictionary can be used like this::
+
+    d = dict(a=1)
+    d['b'] = 2
+    x = d['a'] + d['b']
+
+The members in dictionary can only be accessed by `[]`, But in some other
+languages(eg. javascript), they can be access by `.`::
+
+    d.b = 2
+    x = d.a + d.b
+
+With dotit, you can do same thing in similar manner, dotit provide thress
+class to do it.
+
+DotDict::
+
+    from dotit import DotDict
+    d = DotDict(a=1)
+    d.b = 2
+    x = d.a + d.b
+
+DotOrderedDict, inherit from collections.OrderedDict::
+
+	...	# similar to DotDict
+
+DotIt, if you already have a dict like object, you can wrapper with DotIt::
+
+    d = dict(a=1, b=2)
+    ...
+    d = DotDit(d)
+    x = d.a + d.b 
+
 
 loadit
 ======
