@@ -2,7 +2,7 @@
 from distutils.core import setup
 import os.path
 
-version = '0.1.2'
+version = '0.1.4'
 
 classifiers = [
     "Programming Language :: Python",

@@ -68,8 +68,15 @@ DotIt, if you already have a dict like object, you can wrapper with DotIt::
 
     d = dict(a=1, b=2)
     ...
-    d = DotDit(d)
+    d = DotIt(d)
     x = d.a + d.b 
+
+DotIt can also deal with nest dict::
+
+    d = dict(a=dict(aa=1, ab=2), b=2)
+    ...
+    d = DotIt(d)
+    x = d.a.aa + d.a.ab
 
 
 loadit

@@ -34,3 +34,9 @@ def test_dotit():
         assert d.c
     except AttributeError:
         pass
+
+def test_dotit_nest_dict():
+    adict = dict(a=dict(aa=1, ab=2), b=2)
+    d = dotit.DotIt(adict)
+    assert d.a.aa == 1
+    assert d.a.ab == 2
