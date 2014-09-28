@@ -38,7 +38,7 @@ class DotOrderedDict(OrderedDict):
         except KeyError:
             raise AttributeError('%r has not attr %r' % (self, name))
 
-    def __str__(self):
+    def __repr__(self):
         if not self:
             return '%s()' % (self.__class__.__name__,)
         return '%s(%s)' % (
@@ -46,13 +46,13 @@ class DotOrderedDict(OrderedDict):
             ', '.join(('{}={!r}'.format(*i) for i in self.items())))
 
 
-class DotIt(object):
+class DotIt(dict):
     def __init__(self, o):
-        self.__dotit_o__ = o
+        self.update(o)
 
     def __getattr__(self, name):
         try:
-            value = self.__dotit_o__[name]
+            value = self[name]
         except KeyError:
             raise AttributeError('%r has not attr %r' % (self, name))
         else:
@@ -61,12 +61,10 @@ class DotIt(object):
             return value
 
     def __setattr__(self, name, value):
-        if name == '__dotit_o__':
-            return object.__setattr__(self, name, value)
-        self.__dotit_o__[name] = value
+        self[name] = value
 
     def __delattr__(self, name):
         try:
-            del self.__dotit_o__[name]
+            del self[name]
         except KeyError:
             raise AttributeError('%r has not attr %r' % self, name)
